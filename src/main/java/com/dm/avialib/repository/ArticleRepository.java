@@ -1,6 +1,7 @@
 package com.dm.avialib.repository;
 
 import com.dm.avialib.entity.Article;
+import com.dm.avialib.entity.Category;
 import jakarta.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,6 +21,18 @@ public class ArticleRepository {
             session.beginTransaction();
 
             articles = session.createQuery("from Article ", Article.class).getResultList();
+
+            session.getTransaction().commit();
+        }
+        return articles;
+    }
+    public List<Article> getAllArticlesByCategory(Category category) {
+        List<Article> articles;
+        try (final Session session = factory.openSession()) {
+            session.beginTransaction();
+            articles = session.createQuery("from Article where categoryByCategoryId = :categoryId", Article.class)
+                    .setParameter("categoryId", category)
+                    .getResultList();
 
             session.getTransaction().commit();
         }

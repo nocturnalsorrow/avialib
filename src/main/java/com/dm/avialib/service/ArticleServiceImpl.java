@@ -10,15 +10,22 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl implements ArticleService{
     private final ArticleRepository articleRepository;
+    private final CategoryService categoryService;
 
     @Autowired
-    public ArticleServiceImpl(ArticleRepository articleRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryService categoryService) {
         this.articleRepository = articleRepository;
+        this.categoryService = categoryService;
     }
 
     @Override
     public List<Article> getAllArticles() {
         return articleRepository.getAllArticles();
+    }
+
+    @Override
+    public List<Article> getAllArticlesByCategory(Long id) {
+        return articleRepository.getAllArticlesByCategory(categoryService.getCategoryById(id));
     }
 
     @Override

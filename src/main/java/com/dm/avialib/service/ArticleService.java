@@ -5,7 +5,9 @@ import com.dm.avialib.entity.Article;
 import java.util.List;
 
 public interface ArticleService {
+
     List<Article> getAllArticles();
+    List<Article> getAllArticlesByCategory(Long id);
 
     Article getArticleById(Long id);
 
