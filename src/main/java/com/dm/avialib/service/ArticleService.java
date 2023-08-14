@@ -16,4 +16,6 @@ public interface ArticleService {
     Article updateArticle(Article article);
 
     void deleteArticleById(Long id);
+
+    List<List<Article>> getChunkList(List<Article> list);
 }

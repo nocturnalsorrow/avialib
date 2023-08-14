@@ -1,6 +1,5 @@
 package com.dm.avialib.service;
 
-import com.dm.avialib.entity.Article;
 import com.dm.avialib.entity.Category;
 import com.dm.avialib.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

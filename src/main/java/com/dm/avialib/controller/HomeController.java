@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,10 +36,20 @@ public class HomeController {
         return "html/article";
     }
 
+//    @GetMapping("/category/{categoryId}")
+//    public String getCategoryArticles(@PathVariable Long categoryId, Model model){
+//        List<Article> articles = articleService.getAllArticlesByCategory(categoryId);
+//        model.addAttribute("articles", articles);
+//        return "html/categoryArticles";
+//    }
+
     @GetMapping("/category/{categoryId}")
-    public String getCategoryArticles(@PathVariable Long categoryId, Model model){
-        List<Article> articles = articleService.getAllArticlesByCategory(categoryId);
-        model.addAttribute("articles", articles);
+    public String getCategoryArticles(@PathVariable Long categoryId, Model model) {
+        List<List<Article>> chunkedArticles = articleService.getChunkList(articleService.getAllArticlesByCategory(categoryId));
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("chunkedArticles", chunkedArticles);
         return "html/categoryArticles";
     }
+
+
 }
