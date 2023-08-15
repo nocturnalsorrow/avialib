@@ -11,15 +11,7 @@
 
 <header th:replace="~{/html/fragments/header :: header}"></header>
 
-<div class="container">
-    <ul class="nav nav-pills">
-            <th:block th:each="category:${categories}">
-                <li class="nav-item">
-                    <h5><a th:href="@{/category/{categoryId}(categoryId=${category.categoryId})}" class="nav-link px-2 link-dark" th:text="${category.name}"></a></h5>
-                </li>
-            </th:block>
-    </ul>
-</div>
+<div th:replace="~{/html/fragments/categoriesMenu}"></div>
 
 <footer th:replace="~{/html/fragments/footer :: footer}"></footer>
 

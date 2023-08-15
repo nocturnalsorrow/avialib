@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,21 +18,14 @@ public class HomeController {
 
     @Autowired
     public HomeController(ArticleService articleService, CategoryService categoryService) {
-        this.articleService = articleService;
         this.categoryService = categoryService;
+        this.articleService = articleService;
     }
 
     @GetMapping("/")
     public String home(Model model){
         model.addAttribute("categories", categoryService.getAllCategories());
         return "html/index";
-    }
-
-    @GetMapping("/article/{articleId}")
-    public String getArticle(@PathVariable Long articleId, Model model){
-        Article article = articleService.getArticleById(articleId);
-        model.addAttribute("article", article);
-        return "html/article";
     }
 
 //    @GetMapping("/category/{categoryId}")
