@@ -1,6 +1,7 @@
 package com.dm.avialib.service;
 
 import com.dm.avialib.entity.Article;
+import com.dm.avialib.entity.User;
 
 import java.util.List;
 
@@ -17,6 +18,8 @@ public interface ArticleService {
     Article updateArticle(Article article);
 
     void deleteArticleById(Long id);
+
+    User signUpUser(User user);
 
     List<List<Article>> getChunkList(List<Article> list);
 }

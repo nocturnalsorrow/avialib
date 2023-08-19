@@ -1,8 +1,12 @@
 package com.dm.avialib.service;
 
 import com.dm.avialib.entity.Article;
+import com.dm.avialib.entity.User;
 import com.dm.avialib.repository.ArticleRepository;
+import com.dm.avialib.repository.CategoryRepository;
+import com.dm.avialib.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,12 +15,14 @@ import java.util.List;
 @Service
 public class ArticleServiceImpl implements ArticleService{
     private final ArticleRepository articleRepository;
-    private final CategoryService categoryService;
+    private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryService categoryService) {
+    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
         this.articleRepository = articleRepository;
-        this.categoryService = categoryService;
+        this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -26,7 +32,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public List<Article> getAllArticlesByCategory(Long id) {
-        return articleRepository.getAllArticlesByCategory(categoryService.getCategoryById(id));
+        return articleRepository.getAllArticlesByCategory(categoryRepository.getCategoryById(id));
     }
 
     @Override
@@ -52,6 +58,13 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public void deleteArticleById(Long id) {
         articleRepository.deleteArticleById(id);
+    }
+
+    @Override
+    public User signUpUser(User user) {
+        user.setRole("USER");
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        return userRepository.createUser(user);
     }
 
     @Override
