@@ -14,6 +14,5 @@
 
         <mapping class="com.dm.avialib.entity.Article"/>
         <mapping class="com.dm.avialib.entity.Category"/>
-        <mapping class="com.dm.avialib.entity.User"/>
     </session-factory>
 </hibernate-configuration>
