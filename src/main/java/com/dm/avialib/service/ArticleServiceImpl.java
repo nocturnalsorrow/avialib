@@ -30,6 +30,11 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    public List<Article> getAllArticlesByDate() {
+        return articleRepository.getAllArticlesByDate();
+    }
+
+    @Override
     public Article getArticleById(Long id) {
         return articleRepository.getArticleById(id);
     }

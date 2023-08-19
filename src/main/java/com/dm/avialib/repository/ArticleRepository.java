@@ -48,6 +48,17 @@ public class ArticleRepository {
         }
     }
 
+    public List<Article> getAllArticlesByDate() {
+        List<Article> articles;
+        try (final Session session = factory.openSession()) {
+            session.beginTransaction();
+            articles = session.createQuery("from Article order by publicationDate DESC", Article.class)
+                    .getResultList();
+            session.getTransaction().commit();
+        }
+        return articles;
+    }
+
     public Article createArticle(Article article) {
         try (final Session session = factory.openSession()) {
             session.beginTransaction();

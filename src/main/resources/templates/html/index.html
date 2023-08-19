@@ -11,7 +11,11 @@
 
 <header th:replace="~{/html/fragments/header :: header}"></header>
 
-<div th:replace="~{/html/fragments/categoriesMenu}"></div>
+<h3>Recent articles:</h3>
+<th:block th:each="article:${articles}">
+        <h5><a th:href="@{/article/{articleId} (articleId=${article.articleId})}" class="nav-link px-2 link-dark" th:text="${article.title}"></a></h5>
+        <h5><a th:href="@{/#}" class="nav-link px-2 link-dark" th:text="${article.publicationDate}"></a></h5>
+</th:block>
 
 <footer th:replace="~{/html/fragments/footer :: footer}"></footer>
 
