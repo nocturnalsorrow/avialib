@@ -4,6 +4,7 @@ import com.dm.avialib.entity.User;
 import com.dm.avialib.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,12 +36,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User signUpUser(User user) {
-        return null;
+        user.setRole("USER");
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        return userRepository.createUser(user);
     }
 
     @Override
     public User updateUser(User user) {
-        return null;
+        return userRepository.updateUser(user);
     }
 
     @Override

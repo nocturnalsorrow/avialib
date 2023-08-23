@@ -46,6 +46,18 @@ public class UserRepository {
         return user;
     }
 
+
+    public User updateUser(User user) {
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+
+            session.merge(user);
+
+            session.getTransaction().commit();
+        }
+        return user;
+    }
+
     public void deleteUserByEmail(String email) {
         try (Session session = factory.openSession()) {
             session.beginTransaction();

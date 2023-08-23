@@ -10,16 +10,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class LoginController {
+public class SignUpController {
     private final UserService userService;
 
     @Autowired
-    public LoginController(UserService userService) {
+    public SignUpController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "html/login";
+    @GetMapping("/sign-up")
+    public String signUpForm(Model model){
+        model.addAttribute("user", new User());
+
+        return "html/signUp";
+    }
+
+    @PostMapping("/sign-up")
+    public String signUpSubmit(@ModelAttribute User user){
+        userService.signUpUser(user);
+
+        return "redirect:/login";
     }
 }
