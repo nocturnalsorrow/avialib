@@ -36,6 +36,7 @@
                         <a th:href="@{/article/{articleId}(articleId=${article.articleId})}">
                             <div class="tile">
                                 <div class="tile-content">
+                                    <img th:class="image" th:src="${article.photo}" th:alt="${article.photo}">
                                     <h5 th:text="${article.title}"></h5>
                                 </div>
                             </div>

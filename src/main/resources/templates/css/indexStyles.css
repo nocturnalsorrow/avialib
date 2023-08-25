@@ -1,0 +1,15 @@
+.articles-container {
+    float: right;
+    width: 30%;
+    padding: 20px;
+}
+.article-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.footer {
+    clear: both;
+    text-align: center;
+    padding: 20px;
+}

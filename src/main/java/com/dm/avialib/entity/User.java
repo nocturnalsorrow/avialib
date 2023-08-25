@@ -11,7 +11,6 @@ import lombok.*;
 @EqualsAndHashCode
 @Table(name = "users")
 public class User {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "email")
     private String email;

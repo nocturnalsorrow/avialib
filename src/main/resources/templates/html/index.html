@@ -3,21 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Home page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+        .articles-container {
+            float: right;
+            width: 30%;
+            padding: 20px;
+        }
+        .article-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .footer {
+            clear: both;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
 
 <header th:replace="~{/html/fragments/header :: header}"></header>
 
-<h3>Recent articles:</h3>
-<th:block th:each="article:${articles}">
-        <h5><a th:href="@{/article/{articleId} (articleId=${article.articleId})}" class="nav-link px-2 link-dark" th:text="${article.title}"></a></h5>
-        <h5><a th:href="@{/#}" class="nav-link px-2 link-dark" th:text="${article.publicationDate}"></a></h5>
-</th:block>
+<div class="articles-container">
+    <h3>Recent articles:</h3>
+    <th:block th:each="article:${articles}">
+        <div class="article-item">
+            <h5><a th:href="@{/article/{articleId} (articleId=${article.articleId})}" class="nav-link px-2 link-dark"
+                   th:text="${article.title}"></a></h5>
+            <p th:text="${article.publicationDate}" class="text-muted"></p>
+        </div>
+    </th:block>
+</div>
 
-<footer th:replace="~{/html/fragments/footer :: footer}"></footer>
+<div class="footer">
+    <footer th:replace="~{/html/fragments/footer :: footer}"></footer>
+</div>
 
 </body>
 </html>
+
+
+
+
+
