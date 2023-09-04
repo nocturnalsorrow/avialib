@@ -30,7 +30,7 @@ public class ArticleRepository {
         List<Article> articles;
         try (final Session session = factory.openSession()) {
             session.beginTransaction();
-            articles = session.createQuery("from Article where categoryByCategoryId = :categoryId", Article.class)
+            articles = session.createQuery("from Article where categoryId = :categoryId", Article.class)
                     .setParameter("categoryId", category)
                     .getResultList();
 

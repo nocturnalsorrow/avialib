@@ -22,7 +22,7 @@ public class Article {
     private String content;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-    private Category categoryByCategoryId;
+    private Category categoryId;
     @Column(name = "publication_date", nullable = true)
     private Date publicationDate;
     @Column(name = "photo", nullable = true, length = -1)

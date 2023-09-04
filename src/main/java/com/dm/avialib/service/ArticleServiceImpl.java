@@ -6,6 +6,7 @@ import com.dm.avialib.repository.ArticleRepository;
 import com.dm.avialib.repository.CategoryRepository;
 import com.dm.avialib.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +51,15 @@ public class ArticleServiceImpl implements ArticleService{
         return articleRepository.createArticle(article);
     }
 
+    //потім перевірити
     @Override
     public Article updateArticle(Article article) {
-        return articleRepository.updateArticle(article);
+        Article oldArticle = articleRepository.getArticleById(article.getArticleId());
+        oldArticle.setTitle(article.getTitle());
+        oldArticle.setContent(article.getContent());
+        oldArticle.setPublicationDate(article.getPublicationDate());
+        oldArticle.setPhoto(article.getPhoto());
+        return articleRepository.updateArticle(oldArticle);
     }
 
     @Override

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 @Getter
@@ -20,7 +19,7 @@ public class Category {
     @Basic
     @Column(name = "name", nullable = false, length = 255)
     private String name;
-    @OneToMany(mappedBy = "categoryByCategoryId")
+    @OneToMany(mappedBy = "categoryId")
     private Collection<Article> articlesByCategoryId;
 
 }

@@ -78,7 +78,7 @@ class ArticleRepositoryTest {
         articleToUpdate.setArticleId(2L);
         articleToUpdate.setTitle("Updated Title");
         articleToUpdate.setContent("Updated Content");
-        articleToUpdate.setCategoryByCategoryId(new Category());
+        articleToUpdate.setCategoryId(new Category());
         articleToUpdate.setPublicationDate(Date.valueOf("2023-07-09"));
         articleToUpdate.setPhoto("updated link");
 
@@ -89,7 +89,7 @@ class ArticleRepositoryTest {
         assertEquals(2L, updatedArticle.getArticleId());
         assertEquals("Updated Title", updatedArticle.getTitle());
         assertEquals("Updated Content", updatedArticle.getContent());
-        assertEquals(new Category(), updatedArticle.getCategoryByCategoryId());
+        assertEquals(new Category(), updatedArticle.getCategoryId());
         assertEquals(Date.valueOf("2023-07-09"), updatedArticle.getPublicationDate());
         assertEquals(articleToUpdate, updatedArticle);
         // Можно также проверить, что не было вызова других методов внутри articleRepository, если это требуется
