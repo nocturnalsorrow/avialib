@@ -1,16 +1,11 @@
 package com.dm.avialib.controller;
 
 import com.dm.avialib.entity.Article;
-import com.dm.avialib.entity.User;
 import com.dm.avialib.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ArticleController {
@@ -32,7 +27,7 @@ public class ArticleController {
     public String getAllArticles(Model model) {
         model.addAttribute("articles", articleService.getAllArticles());
 
-        return "html/articlesToEdit";
+        return "html/articles";
     }
 
     @GetMapping("/article/update/{articleId}")
@@ -47,5 +42,19 @@ public class ArticleController {
         articleService.updateArticle(updatedArticle);
 
         return "redirect:/articles";
+    }
+
+    @GetMapping ("/article")
+    public String getArticleToCreate(Model model) {
+        model.addAttribute("article", new Article());
+
+        return "html/createArticle";
+    }
+
+    @PostMapping("/article")
+    public String createArticle(@ModelAttribute Article article) {
+        articleService.createArticle(article);
+
+        return "redirect:/categoryArticles";
     }
 }

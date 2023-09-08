@@ -51,7 +51,6 @@ public class ArticleServiceImpl implements ArticleService{
         return articleRepository.createArticle(article);
     }
 
-    //потім перевірити
     @Override
     public Article updateArticle(Article article) {
         Article oldArticle = articleRepository.getArticleById(article.getArticleId());
