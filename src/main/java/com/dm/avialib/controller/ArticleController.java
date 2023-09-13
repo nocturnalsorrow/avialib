@@ -38,7 +38,7 @@ public class ArticleController {
     }
 
     @PostMapping("/article/update")
-    public String editArticle(@ModelAttribute Article updatedArticle) {
+    public String updateArticle(@ModelAttribute Article updatedArticle) {
         articleService.updateArticle(updatedArticle);
 
         return "redirect:/articles";

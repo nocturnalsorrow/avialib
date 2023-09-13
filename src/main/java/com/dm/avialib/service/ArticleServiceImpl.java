@@ -17,13 +17,11 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService{
     private final ArticleRepository articleRepository;
     private final CategoryRepository categoryRepository;
-    private final UserRepository userRepository;
 
     @Autowired
-    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
+    public ArticleServiceImpl(ArticleRepository articleRepository, CategoryRepository categoryRepository) {
         this.articleRepository = articleRepository;
         this.categoryRepository = categoryRepository;
-        this.userRepository = userRepository;
     }
 
     @Override
@@ -64,13 +62,6 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public void deleteArticleById(Long id) {
         articleRepository.deleteArticleById(id);
-    }
-
-    @Override
-    public User signUpUser(User user) {
-        user.setRole("USER");
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-        return userRepository.createUser(user);
     }
 
     @Override
