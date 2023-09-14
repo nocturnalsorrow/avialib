@@ -18,13 +18,16 @@
     <h3>Articles to Edit:</h3>
     <div class="list-group">
         <th:block th:each="article:${articles}">
-            <a th:href="@{/article/update/{articleId} (articleId=${article.articleId})}"
-               class="list-group-item list-group-item-action"
-               th:text="${article.title}"></a>
+            <div class="list-group-item list-group-item-action">
+                <a th:href="@{/article/update/{articleId} (articleId=${article.articleId})}"
+                   th:text="${article.title}"></a>
+            </div>
         </th:block>
     </div>
-    <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <span th:text="Edit"></span>
+    <button type="button" class="btn btn-primary mt-3">
+        <a th:href="@{/article}">
+            <span th:text="Add"></span>
+        </a>
     </button>
 </div>
 

@@ -18,8 +18,8 @@ public class ArticleController {
 
     @GetMapping("/article/{articleId}")
     public String getArticle(@PathVariable Long articleId, Model model) {
-        Article article = articleService.getArticleById(articleId);
-        model.addAttribute("article", article);
+        model.addAttribute("article", articleService.getArticleById(articleId));
+
         return "html/article";
     }
 
@@ -55,6 +55,13 @@ public class ArticleController {
     public String createArticle(@ModelAttribute Article article) {
         articleService.createArticle(article);
 
-        return "redirect:/categoryArticles";
+        return "redirect:/articles";
+    }
+
+    @DeleteMapping("/article/{articleId}")
+    public String deleteArticle(@PathVariable Long articleId) {
+        articleService.deleteArticleById(articleId);
+
+        return "redirect:/articles";
     }
 }
