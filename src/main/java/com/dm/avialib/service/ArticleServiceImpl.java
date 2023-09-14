@@ -1,6 +1,7 @@
 package com.dm.avialib.service;
 
 import com.dm.avialib.entity.Article;
+import com.dm.avialib.entity.Category;
 import com.dm.avialib.entity.User;
 import com.dm.avialib.repository.ArticleRepository;
 import com.dm.avialib.repository.CategoryRepository;
@@ -46,6 +47,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public Article createArticle(Article article) {
+
         return articleRepository.createArticle(article);
     }
 
