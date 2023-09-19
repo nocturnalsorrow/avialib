@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model){
-        model.addAttribute("articles", articleService.getAllArticlesByDate());
+        model.addAttribute("articles", articleService.getRecentArticles());
 
         return "html/index";
     }

@@ -21,6 +21,11 @@
             <div class="list-group-item list-group-item-action">
                 <a th:href="@{/article/update/{articleId} (articleId=${article.articleId})}"
                    th:text="${article.title}"></a>
+                <button type="button" class="btn btn-primary mt-3">
+                    <a th:href="@{/article/delete/{articleId} (articleId=${article.articleId})}">
+                        <span th:text="Delete"></span>
+                    </a>
+                </button>
             </div>
         </th:block>
     </div>

@@ -58,7 +58,7 @@ public class ArticleController {
         return "redirect:/articles";
     }
 
-    @DeleteMapping("/article/{articleId}")
+    @GetMapping("/article/delete/{articleId}")
     public String deleteArticle(@PathVariable Long articleId) {
         articleService.deleteArticleById(articleId);
 

@@ -41,6 +41,11 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    public List<Article> getRecentArticles() {
+        return articleRepository.getRecentArticles();
+    }
+
+    @Override
     public Article getArticleById(Long id) {
         return articleRepository.getArticleById(id);
     }
