@@ -16,12 +16,14 @@
 
 <div class="container">
     <div class="row">
-        <strong><span th:text="#{profile.label.username}"/></strong><span th:text="${user.username}"> </span>
-        <strong><span th:text="#{profile.label.email}"/></strong><span th:text="${user.email}"> </span>
+        <strong><span th:text="#{profile.label.username}"></span></strong><span th:text="${user.username}"> </span>
+        <strong><span th:text="#{profile.label.email}"></span></strong><span th:text="${user.email}"> </span>
         <h4 class="front-weight-bold blue-text">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <span th:text="#{profile.button.edit}"/>
-            </button>
+            <div class="form-group mt-2">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <span th:text="#{profile.button.edit}"></span>
+                </button>
+            </div>
         </h4>
     </div>
 </div>
@@ -41,7 +43,8 @@
                         </div>
                         <div class="form-group">
                             <label><span th:text="#{profile.label.password}"/></label>
-                            <input name="password" type="password" required="required" th:field="${user.password}" class="form-control"/>
+                            <input name="password" type="password" required="required" th:field="${user.password}"
+                                   class="form-control"/>
                         </div>
                         <button class="btn-primary" type="submit"><span th:text="#{profile.button.submit}"></span>
                         </button>

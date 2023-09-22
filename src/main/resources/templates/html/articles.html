@@ -21,17 +21,17 @@
             <div class="list-group-item list-group-item-action">
                 <a th:href="@{/article/update/{articleId} (articleId=${article.articleId})}"
                    th:text="${article.title}"></a>
-                <button type="button">
-                    <a th:href="@{/article/delete/{articleId} (articleId=${article.articleId})}">
-                        <span th:text="#{articles.label.delete}"></span>
-                    </a>
-                </button>
+                    <button type="button" class="btn btn-danger float-end">
+                        <a th:href="@{/article/delete/{articleId} (articleId=${article.articleId})}">
+                            <span class="text-white" th:text="#{articles.label.delete}"></span>
+                        </a>
+                    </button>
             </div>
         </th:block>
     </div>
-    <button type="button">
+    <button type="button" class="btn btn-success form-group mt-2">
         <a th:href="@{/article}">
-            <span th:text="#{articles.label.add}"></span>
+            <span class="text-white" th:text="#{articles.label.add}"></span>
         </a>
     </button>
 </div>
@@ -40,3 +40,5 @@
 
 </body>
 </html>
+
+
