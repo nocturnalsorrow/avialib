@@ -1,4 +1,4 @@
-package com.dm.avialib.security;
+package com.dm.avialib.securityConfig;
 
 import com.dm.avialib.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

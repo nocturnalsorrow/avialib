@@ -1,4 +1,4 @@
-package com.dm.avialib.security;
+package com.dm.avialib.securityConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

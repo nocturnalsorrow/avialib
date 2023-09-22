@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AviaLib</title>
+    <title th:text="#{articles.page.title}"></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -15,23 +15,23 @@
 <header th:replace="~{/html/fragments/header :: header}"></header>
 
 <div class="container mt-4">
-    <h3>Articles to Edit:</h3>
+    <h3 th:text="#{articles.label.articlesToEdit}"></h3>
     <div class="list-group">
         <th:block th:each="article:${articles}">
             <div class="list-group-item list-group-item-action">
                 <a th:href="@{/article/update/{articleId} (articleId=${article.articleId})}"
                    th:text="${article.title}"></a>
-                <button type="button" class="btn btn-primary mt-3">
+                <button type="button">
                     <a th:href="@{/article/delete/{articleId} (articleId=${article.articleId})}">
-                        <span th:text="Delete"></span>
+                        <span th:text="#{articles.label.delete}"></span>
                     </a>
                 </button>
             </div>
         </th:block>
     </div>
-    <button type="button" class="btn btn-primary mt-3">
+    <button type="button">
         <a th:href="@{/article}">
-            <span th:text="Add"></span>
+            <span th:text="#{articles.label.add}"></span>
         </a>
     </button>
 </div>

@@ -9,10 +9,10 @@
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a th:href="@{/}" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a th:href="@{/category/1}" class="nav-link px-2 text-white">Categories</a></li>
-                <li><a th:href="@{/profile}" class="nav-link px-2 text-white">My Profile</a></li>
-                <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/articles}" class="nav-link px-2 text-white">Edit Articles</a></li>
+                <li><a th:href="@{/}" class="nav-link px-2 text-secondary" th:text="#{header.label.home}"></a></li>
+                <li><a th:href="@{/category/1}" class="nav-link px-2 text-white" th:text="#{header.label.categories}"></a></li>
+                <li><a th:href="@{/profile}" class="nav-link px-2 text-white" th:text="#{header.label.profile}">Profile</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/articles}" class="nav-link px-2 text-white" th:text="#{header.label.editArticles}">Edit Articles</a></li>
             </ul>
 
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -24,16 +24,15 @@
 
                 <div sec:authorize="!isAuthenticated()">
 
-                <button type="button" class="btn btn-outline-light me-2" th:onclick="|window.location.href='@{/login}'|">Login</button>
-                <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{/sign-up}'|">Sign-up</button>
+                <button type="button" class="btn btn-outline-light me-2" th:onclick="|window.location.href='@{/login}'|" th:text="#{header.button.login}"></button>
+                <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{/sign-up}'|" th:text="#{header.button.sign-up}"></button>
                 </div>
 
                 <div sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
-                        <input type="submit" th:value="Logout"/>
+                        <button class="btn btn-outline-light me-2" type="submit" th:text="#{header.button.logout}"/>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

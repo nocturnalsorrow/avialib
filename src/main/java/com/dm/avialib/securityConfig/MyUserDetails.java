@@ -1,4 +1,4 @@
-package com.dm.avialib.security;
+package com.dm.avialib.securityConfig;
 
 import com.dm.avialib.entity.User;
 import org.springframework.security.core.GrantedAuthority;
