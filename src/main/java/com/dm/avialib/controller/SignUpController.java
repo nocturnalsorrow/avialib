@@ -18,14 +18,14 @@ public class SignUpController {
         this.userService = userService;
     }
 
-    @GetMapping("/sign-up")
+    @GetMapping("/signUp")
     public String signUpForm(Model model){
         model.addAttribute("user", new User());
 
         return "html/signUp";
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping("/signUp")
     public String signUpSubmit(@ModelAttribute User user){
         userService.signUpUser(user);
 

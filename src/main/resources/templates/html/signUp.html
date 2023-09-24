@@ -18,7 +18,7 @@
 <div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
     <div class="col-lg-8 col-lg-offset-2">
         <h1 class="text-center" th:text="#{signUp.label.signUp}"></h1>
-        <form th:method="POST" th:action="@{/sign-up}" th:object="${user}">
+        <form th:method="POST" th:action="@{/signUp}" th:object="${user}">
             <div class="messages"></div>
             <div class="controls">
                 <div class="row">
