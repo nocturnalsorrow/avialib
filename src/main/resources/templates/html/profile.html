@@ -19,30 +19,28 @@
         <strong><span th:text="#{profile.label.username}"></span></strong><span th:text="${user.username}"> </span>
         <strong><span th:text="#{profile.label.email}"></span></strong><span th:text="${user.email}"> </span>
         <h4 class="front-weight-bold blue-text">
-            <div class="form-group mt-2">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary form-group mt-2" data-bs-toggle="modal" data-bs-target="#profileEditModal">
                     <span th:text="#{profile.button.edit}"></span>
                 </button>
-            </div>
         </h4>
     </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="profileEditModal" tabindex="-1" aria-labelledby="profileEditModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
                     <form th:action="@{/profile/edit}" th:method="POST">
                         <div class="form-group">
-                            <label><span th:text="#{profile.label.username}"/></label>
+                            <label><span th:text="#{profile.label.username}"></span></label>
                             <input name="username" type="text" th:field="${user.username}" th:value="${user.username}"
                                    class="form-control" pattern="[A-Z][a-z]*(([,.] |[ '-])[A-Za-z][a-z]*)*(\.?)"
-                                   required="required"/>
+                                   required="required">
                         </div>
                         <div class="form-group">
-                            <label><span th:text="#{profile.label.password}"/></label>
+                            <label><span th:text="#{profile.label.password}"></span></label>
                             <input name="password" type="password" required="required" th:field="${user.password}"
                                    class="form-control"/>
                         </div>
