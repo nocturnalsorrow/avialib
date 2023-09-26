@@ -46,10 +46,11 @@
                             <input name="password" type="password" required="required" th:field="${user.password}"
                                    class="form-control"/>
                         </div>
-                        <button class="btn-primary" type="submit"><span th:text="#{profile.button.submit}"></span>
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                th:text="#{profile.button.close}"></button>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-primary" th:text="#{profile.button.submit}"></button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                    th:text="#{profile.button.close}"></button>
+                        </div>
                     </form>
                 </div>
             </div>
