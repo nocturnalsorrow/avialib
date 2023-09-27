@@ -25,7 +25,7 @@
                 <div sec:authorize="!isAuthenticated()">
 
                 <button type="button" class="btn btn-outline-light me-2" th:onclick="|window.location.href='@{/login}'|" th:text="#{header.button.login}"></button>
-                <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{/signUp}'|" th:text="#{header.button.sign-up}"></button>
+                <button type="button" class="btn btn-warning" th:onclick="|window.location.href='@{/signUp}'|" th:text="#{header.button.signUp}"></button>
                 </div>
 
                 <div sec:authorize="isAuthenticated()">
