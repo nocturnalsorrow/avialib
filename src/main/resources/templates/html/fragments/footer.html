@@ -12,19 +12,18 @@
         <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
     </ul>
 
-<!--    <ul class="nav nav-pills">-->
-<!--        <li class="nav-item"-->
-<!--            th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder)}">-->
-<!--            <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', 'ua').toUriString()}"-->
-<!--               th:text="#{language.ua}"></a>-->
-<!--        </li>-->
-<!--        &nbsp;-->
-<!--        <li class="nav-item"-->
-<!--            th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder)}">-->
-<!--            <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', ' ').toUriString()}"-->
-<!--               th:text="#{language.eng}"></a>-->
-<!--        </li>-->
-<!--    </ul>-->
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="?lang=ua">UA</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?lang=ru">RU</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="?lang=en">EN</a>
+        </li>
+    </ul>
+
 </footer>
 
 
