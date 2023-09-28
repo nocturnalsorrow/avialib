@@ -26,6 +26,21 @@ public class ArticleRepository {
         }
         return articles;
     }
+
+    public List<Article> getRecentArticles() {
+        List<Article> articles;
+        try (final Session session = factory.openSession()) {
+            session.beginTransaction();
+
+            articles = session.createQuery("from Article order by publicationDate DESC", Article.class)
+                    .setMaxResults(6)
+                    .getResultList();
+
+            session.getTransaction().commit();
+        }
+        return articles;
+    }
+
     public List<Article> getAllArticlesByCategory(Category category) {
         List<Article> articles;
         try (final Session session = factory.openSession()) {

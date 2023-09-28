@@ -13,33 +13,40 @@
 <body>
 <header th:replace="~{/html/fragments/header :: header}"></header>
 
-<div class="row">
+<div class="container mt-4">
+    <h3 th:text="#{createArticle.label.addArticle}"></h3>
     <form th:action="@{/article}" th:method="POST">
         <div class="form-group">
-            <label><span th:text="articleId"/></label>
-            <input name="articleId" type="hidden" th:flied="${article.articleId}" class="form-control"/>
+            <input name="articleId" type="hidden" th:value="${article.articleId}" class="form-control"
+                   style="width: 33%"/>
         </div>
         <div class="form-group">
-            <label><span th:text="#{createArticle.label.title}"/></label>
-            <input name="title" type="text" th:field="${article.title}" class="form-control"/>
+            <label for="title"><strong th:text="#{createArticle.label.title}"></strong></label>
+            <input name="title" type="text" th:field="${article.title}" id="title" class="form-control"
+                   style="width: 33%"/>
         </div>
         <div class="form-group">
-            <label><span th:text="categoryId"/></label>
-            <input name="categoryId" type="text" th:field="${article.categoryId}" class="form-control"/>
+            <label for="categoryId"><strong th:text="#{createArticle.label.categoryId}"></strong></label>
+            <input name="categoryId" type="text" th:field="${article.categoryId.categoryId}" id="categoryId"
+                   class="form-control" style="width: 33%"/>
         </div>
         <div class="form-group">
-            <label><span th:text="#{createArticle.label.publicationDate}"/></label>
-            <input name="publicationDate" type="date" th:field="${article.publicationDate}" class="form-control"/>
+            <label for="publicationDate"><strong th:text="#{createArticle.label.publicationDate}"></strong></label>
+            <input name="publicationDate" type="date" th:field="${article.publicationDate}" id="publicationDate"
+                   class="form-control" style="width: 33%"/>
         </div>
         <div class="form-group">
-            <label><span th:text="#{createArticle.label.photo}"/></label>
-            <input name="photo" type="text" th:field="${article.photo}" class="form-control"/>
+            <label for="photo"><strong th:text="#{createArticle.label.photoURL}"></strong></label>
+            <input name="photo" type="text" th:field="${article.photo}" id="photo" class="form-control"/>
         </div>
         <div class="form-group">
-            <label><span th:text="#{createArticle.label.content}"/></label>
-            <textarea name="content" rows="20" cols="150" th:field="${article.content}"></textarea>
+            <label for="content"><strong th:text="#{createArticle.label.content}"></strong></label>
+            <textarea name="content" rows="10" th:field="${article.content}" id="content"
+                      class="form-control"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" th:text="#{createArticle.button.submit}"></button>
+        <div class="form-group mt-2">
+            <button type="submit" class="btn btn-primary" th:text="#{createArticle.button.submit}"></button>
+        </div>
     </form>
 </div>
 
