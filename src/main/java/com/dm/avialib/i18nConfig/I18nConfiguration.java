@@ -1,4 +1,4 @@
-package com.dm.avialib.I18Config;
+package com.dm.avialib.i18nConfig;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
