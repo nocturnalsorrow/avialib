@@ -19,6 +19,6 @@ public class HomeController {
     public String home(Model model){
         model.addAttribute("articles", articleService.getRecentArticles());
 
-        return "html/index";
+        return "index";
     }
 }

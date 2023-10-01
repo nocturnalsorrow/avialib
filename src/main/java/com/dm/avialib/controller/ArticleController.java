@@ -20,21 +20,21 @@ public class ArticleController {
     public String getArticle(@PathVariable Long articleId, Model model) {
         model.addAttribute("article", articleService.getArticleById(articleId));
 
-        return "html/article";
+        return "article";
     }
 
     @GetMapping("/articles")
     public String getAllArticles(Model model) {
         model.addAttribute("articles", articleService.getAllArticles());
         
-        return "html/articles";
+        return "articles";
     }
 
     @GetMapping("/article/update/{articleId}")
     public String getArticleToUpdate(@PathVariable Long articleId, Model model) {
         Article article = articleService.getArticleById(articleId);
         model.addAttribute("article", article);
-        return "html/articleToEdit";
+        return "articleToEdit";
     }
 
     @PostMapping("/article/update")
@@ -48,7 +48,7 @@ public class ArticleController {
     public String getArticleToCreate(Model model) {
         model.addAttribute("article", new Article());
 
-        return "html/createArticle";
+        return "createArticle";
     }
 
     @PostMapping("/article")

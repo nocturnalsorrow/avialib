@@ -9,6 +9,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(){
-        return "html/login";
+        return "login";
     }
 }

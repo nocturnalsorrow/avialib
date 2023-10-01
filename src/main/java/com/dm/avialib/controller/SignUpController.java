@@ -22,7 +22,7 @@ public class SignUpController {
     public String signUpForm(Model model){
         model.addAttribute("user", new User());
 
-        return "html/signUp";
+        return "signUp";
     }
 
     @PostMapping("/signUp")

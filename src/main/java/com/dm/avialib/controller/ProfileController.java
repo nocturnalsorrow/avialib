@@ -23,7 +23,7 @@ public class ProfileController {
     public String getProfile(Authentication authentication, Model model) {
         model.addAttribute("user", userService.getUserByEmail(authentication.getName()));
 
-        return  "html/profile";
+        return  "profile";
     }
 
     @PostMapping("/profile/edit")
