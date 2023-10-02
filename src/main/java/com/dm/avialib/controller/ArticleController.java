@@ -2,6 +2,7 @@ package com.dm.avialib.controller;
 
 import com.dm.avialib.entity.Article;
 import com.dm.avialib.service.ArticleService;
+import com.dm.avialib.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class ArticleController {
     private final ArticleService articleService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public ArticleController(ArticleService articleService) {
+    public ArticleController(ArticleService articleService, CategoryService categoryService) {
         this.articleService = articleService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/article/{articleId}")
@@ -47,6 +50,7 @@ public class ArticleController {
     @GetMapping ("/article")
     public String getArticleToCreate(Model model) {
         model.addAttribute("article", new Article());
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "createArticle";
     }
