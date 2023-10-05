@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+<div class="container mt-5">
+  <h1>Search Results</h1>
+
+  <div th:if="${searchResults.isEmpty()}">
+    <p>No results found.</p>
+  </div>
+
+  <div th:unless="${searchResults.isEmpty()}">
+    <ul>
+      <li th:each="article : ${searchResults}">
+        <!-- Отображение результатов поиска -->
+        <a th:href="@{/article/{articleId}(articleId=${article.articleId})}" th:text="${article.title}"></a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

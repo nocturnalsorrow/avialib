@@ -7,6 +7,7 @@ import java.util.List;
 public interface ArticleService {
 
     List<Article> getAllArticles();
+    List<Article> getArticlesByTitle(String partialTitle);
     List<Article> getAllArticlesByCategory(Long id);
     List<Article> getAllArticlesByDate();
     List<Article> getRecentArticles();

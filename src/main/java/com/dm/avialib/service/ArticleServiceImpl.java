@@ -31,6 +31,11 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    public List<Article> getArticlesByTitle(String partialTitle) {
+        return articleRepository.getArticlesByTitle(partialTitle);
+    }
+
+    @Override
     public List<Article> getAllArticlesByCategory(Long id) {
         return articleRepository.getAllArticlesByCategory(categoryRepository.getCategoryById(id));
     }

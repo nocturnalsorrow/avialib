@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class ArticleController {
     private final ArticleService articleService;
@@ -28,7 +30,7 @@ public class ArticleController {
 
     @GetMapping("/articles")
     public String getAllArticles(Model model) {
-        model.addAttribute("articles", articleService.getAllArticles());
+        model.addAttribute("articles", articleService.getAllArticlesByDate());
         
         return "articles";
     }
@@ -68,4 +70,19 @@ public class ArticleController {
 
         return "redirect:/articles";
     }
+
+    @GetMapping("/search")
+    public String searchArticles(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
+        if (keyword != null && !keyword.isEmpty()) {
+            List<Article> searchResults = articleService.getArticlesByTitle(keyword);
+            model.addAttribute("searchResults", searchResults);
+        } else {
+            // Если поисковой запрос пустой или отсутствует, можно предпринять действие по умолчанию или показать сообщение
+            // Например, можно перенаправить пользователя на страницу со всеми статьями.
+            return "redirect:/categoryArticles";
+        }
+
+        return "searchResults"; // Возвращаем имя HTML шаблона для отображения результатов
+    }
+
 }

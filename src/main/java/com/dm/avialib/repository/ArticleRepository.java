@@ -27,6 +27,21 @@ public class ArticleRepository {
         return articles;
     }
 
+    public List<Article> getArticlesByTitle(String partialTitle) {
+        List<Article> articles;
+        try (final Session session = factory.openSession()) {
+            session.beginTransaction();
+
+            String hql = "from Article where title like :articleTitle";
+            articles = session.createQuery(hql, Article.class)
+                    .setParameter("articleTitle", "%" + partialTitle + "%")
+                    .getResultList();
+
+            session.getTransaction().commit();
+        }
+        return articles;
+    }
+
     public List<Article> getRecentArticles() {
         List<Article> articles;
         try (final Session session = factory.openSession()) {
@@ -36,6 +51,17 @@ public class ArticleRepository {
                     .setMaxResults(6)
                     .getResultList();
 
+            session.getTransaction().commit();
+        }
+        return articles;
+    }
+
+    public List<Article> getAllArticlesByDate() {
+        List<Article> articles;
+        try (final Session session = factory.openSession()) {
+            session.beginTransaction();
+            articles = session.createQuery("from Article order by publicationDate DESC", Article.class)
+                    .getResultList();
             session.getTransaction().commit();
         }
         return articles;
@@ -61,17 +87,6 @@ public class ArticleRepository {
 
             return result != null ? result : new Article();
         }
-    }
-
-    public List<Article> getAllArticlesByDate() {
-        List<Article> articles;
-        try (final Session session = factory.openSession()) {
-            session.beginTransaction();
-            articles = session.createQuery("from Article order by publicationDate DESC", Article.class)
-                    .getResultList();
-            session.getTransaction().commit();
-        }
-        return articles;
     }
 
     public Article createArticle(Article article) {
