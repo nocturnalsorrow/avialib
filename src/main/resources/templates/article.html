@@ -9,6 +9,36 @@
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style>
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .card-content {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,13 +47,8 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-body">
-            <p class="card-text" th:text="${article.title}"></p>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-            <textarea name="content" rows="10" th:text="${article.content}" id="content"
-                      class="form-control"></textarea>
+            <h1 class="card-title" th:text="${article.title}"></h1>
+            <p class="card-content" th:text="${article.content}"></p>
         </div>
     </div>
 </div>
