@@ -26,7 +26,8 @@
                         <div class="form-group">
                             <label for="form_login"><span th:text="#{signUp.label.email}"/></label>
                             <input id="form_login" type="email" th:field="*{email}" class="form-control"
-                                   required="required" th:placeholder="#{signUp.placeholder.email}">
+                                   required="required" th:placeholder="#{signUp.placeholder.email}"
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                         </div>
                     </div>
                     <div class="col-md-6">
