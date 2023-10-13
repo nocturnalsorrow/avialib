@@ -1,12 +1,35 @@
+<style>
+  img {
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .category-name {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, sans-serif; /* Новый шрифт */
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s, font-weight 0.3s;
+  }
+</style>
+
 <div class="container mt-4">
   <ul class="nav nav-pills">
     <th:block th:each="category:${categories}">
       <li>
-        <img src="https://www.skybrary.aero/sites/default/files/01_AGC_hover.png" alt="Category Image">
-        <a th:href="@{/category/{categoryId}(categoryId=${category.categoryId})}" class="nav-link link-dark" th:text="${category.name}" style="font-size: 32px;"></a>
+        <a th:href="@{/category/{categoryId}(categoryId=${category.categoryId})}" class="nav-link link-dark text-center">
+          <img th:src="${category.photoUrl}" alt="Category Image">
+          <span th:text="${category.name}" class="category-name"></span>
+        </a>
       </li>
     </th:block>
   </ul>
 </div>
+
+
 
 
