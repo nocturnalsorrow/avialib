@@ -32,7 +32,7 @@ public class ArticleRepository {
         try (final Session session = factory.openSession()) {
             session.beginTransaction();
 
-            String hql = "from Article where title like :articleTitle";
+            String hql = "from Article where lower(title) like lower(:articleTitle)";
             articles = session.createQuery(hql, Article.class)
                     .setParameter("articleTitle", "%" + partialTitle + "%")
                     .getResultList();
@@ -41,6 +41,7 @@ public class ArticleRepository {
         }
         return articles;
     }
+
 
     public List<Article> getRecentArticles() {
         List<Article> articles;

@@ -1,14 +1,10 @@
 package com.dm.avialib.service;
 
 import com.dm.avialib.entity.Article;
-import com.dm.avialib.entity.Category;
-import com.dm.avialib.entity.User;
+import com.dm.avialib.exceptions.ArticleNotFoundException;
 import com.dm.avialib.repository.ArticleRepository;
 import com.dm.avialib.repository.CategoryRepository;
-import com.dm.avialib.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,6 +27,15 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    public Article getArticleById(Long id) {
+        Article article = articleRepository.getArticleById(id);
+        if (article.getArticleId() == null) {
+            throw new ArticleNotFoundException("Article not found");
+        }
+        return article;
+    }
+
+    @Override
     public List<Article> getArticlesByTitle(String partialTitle) {
         return articleRepository.getArticlesByTitle(partialTitle);
     }
@@ -48,11 +53,6 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public List<Article> getRecentArticles() {
         return articleRepository.getRecentArticles();
-    }
-
-    @Override
-    public Article getArticleById(Long id) {
-        return articleRepository.getArticleById(id);
     }
 
     @Override
