@@ -30,7 +30,7 @@ public class ArticleServiceImpl implements ArticleService{
     public Article getArticleById(Long id) {
         Article article = articleRepository.getArticleById(id);
         if (article.getArticleId() == null) {
-            throw new ArticleNotFoundException("Article not found");
+            throw new ArticleNotFoundException();
         }
         return article;
     }

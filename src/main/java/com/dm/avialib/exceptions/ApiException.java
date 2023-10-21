@@ -16,30 +16,6 @@ public class ApiException {
         this.message = message;
         this.timeStamp = timeStamp;
     }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public void setHttpStatus(HttpStatus httpStatus) {
-        this.httpStatus = httpStatus;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public ZonedDateTime getTimeStamp() {
-        return timeStamp;
-    }
-
-    public void setTimeStamp(ZonedDateTime timeStamp) {
-        this.timeStamp = timeStamp;
-    }
 }
 
 
