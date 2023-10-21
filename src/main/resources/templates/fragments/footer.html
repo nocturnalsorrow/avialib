@@ -12,18 +12,6 @@
         <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
     </ul>
 
-<!--    <ul class="nav nav-pills">-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="?lang=en">EN</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="?lang=uk">UA</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link" href="?lang=ru">RU</a>-->
-<!--        </li>-->
-<!--    </ul>-->
-
     <ul class="nav nav-pills">
         <li class="nav-item"
             th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder)}">
@@ -33,7 +21,7 @@
         &nbsp;&nbsp;
         <li class="nav-item"
             th:with="urlBuilder=${T(org.springframework.web.servlet.support.ServletUriComponentsBuilder)}">
-            <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', ' ').toUriString()}"
+            <a th:href="${urlBuilder.fromCurrentRequest().replaceQueryParam('lang', 'en').toUriString()}"
                th:text="EN"></a>
         </li>
         &nbsp;&nbsp;
