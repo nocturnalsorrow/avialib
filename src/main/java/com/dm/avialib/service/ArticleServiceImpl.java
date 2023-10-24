@@ -1,6 +1,7 @@
 package com.dm.avialib.service;
 
 import com.dm.avialib.entity.Article;
+import com.dm.avialib.exceptions.ArticleBadRequestException;
 import com.dm.avialib.exceptions.ArticleNotFoundException;
 import com.dm.avialib.repository.ArticleRepository;
 import com.dm.avialib.repository.CategoryRepository;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{
@@ -28,10 +31,11 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public Article getArticleById(Long id) {
+        if (id.toString().matches(".*[^0-9].*"))
+            throw new ArticleBadRequestException();
         Article article = articleRepository.getArticleById(id);
-        if (article.getArticleId() == null) {
+        if (article.getArticleId() == null)
             throw new ArticleNotFoundException();
-        }
         return article;
     }
 

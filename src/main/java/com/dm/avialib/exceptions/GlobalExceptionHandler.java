@@ -10,9 +10,15 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(value = ArticleNotFoundException.class)
+    @ExceptionHandler(value = {ArticleNotFoundException.class, ArticleBadRequestException.class})
     protected ResponseEntity<Object> handleArticleNotFoundException(RuntimeException ex, WebRequest request) {
         String bodyOfResponse = "Article not found";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler(value = ArticleBadRequestException.class)
+    protected ResponseEntity<Object> handleBadRequestException(RuntimeException ex, WebRequest request) {
+        String bodyOfResponse = "Article not found (Bad Request)";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }
