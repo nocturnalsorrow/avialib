@@ -11,28 +11,42 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .recent-articles {
+        flex: 0 0 30%; /* Set a fixed width for the recent articles section */
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
 <body>
 
 <header th:replace="~{/fragments/header :: header}"></header>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-9">
-            <h1>Welcome to AviaLibrary!</h1>
-        </div>
-        <div class="col-md-3">
-            <div class="articles-container">
-                <h3 th:text="#{index.label.recentArticles}"></h3>
-                <th:block th:each="article:${articles}">
-                    <div class="article-item">
-                        <h5><a th:href="@{/article/{articleId} (articleId=${article.articleId})}"
-                               class="nav-link px-2 link-dark"
-                               th:text="${article.title}"></a></h5>
-                        <p th:text="${article.publicationDate}" class="text-muted"></p>
-                    </div>
-                </th:block>
+    <div class="col-md-9">
+        <h1>Welcome to AviaLibrary!</h1>
+    </div>
+    <div class="recent-articles">
+        <h3 th:text="#{index.label.recentArticles}"></h3>
+        <th:block th:each="article:${articles}">
+            <div class="article-item">
+                <h5>
+                    <a th:href="@{/article/{articleId} (articleId=${article.articleId})}"
+                       class="nav-link px-2 link-dark"
+                       th:text="${article.title}"></a>
+                </h5>
+                <p th:text="${article.publicationDate}" class="text-muted"></p>
             </div>
-        </div>
+        </th:block>
     </div>
 </div>
 

@@ -27,5 +27,4 @@ public class Article {
     private Date publicationDate;
     @Column(name = "photo", nullable = true, length = -1)
     private String photo;
-
 }

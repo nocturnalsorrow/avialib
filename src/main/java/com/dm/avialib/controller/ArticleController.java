@@ -24,6 +24,7 @@ public class ArticleController {
     @GetMapping("/article/{articleId}")
     public String getArticle(@PathVariable Long articleId, Model model) {
         model.addAttribute("article", articleService.getArticleById(articleId));
+        model.addAttribute("articles", articleService.getRecentArticles());
 
         return "article";
     }

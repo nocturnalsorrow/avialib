@@ -11,11 +11,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <style>
-
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 100%; /* Take up the full width of the viewport */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            flex: 1; /* Take up the available space on the left for the main content */
             padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .recent-articles {
+            flex: 0 0 30%; /* Set a fixed width for the recent articles section */
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
         .card {
@@ -38,20 +53,48 @@
             font-size: 18px;
             color: #555;
         }
+
+        .article-item {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-<header th:replace="~{/fragments/header :: header}"></header>
+<div class="header">
+    <header th:replace="~{/fragments/header :: header}"></header>
+</div>
 
 <div class="container mt-4">
-    <div class="card">
-        <div class="card-body">
-            <h1 class="card-title" th:utext="${article.title}"></h1>
-            <p class="card-content" th:utext="${article.content}"></p>
-            <p class="card-content" th:utext="${article.publicationDate}"></p>
+    <div class="main-content">
+        <div class="card">
+            <div class="card-body">
+                <div th:if="${article.title} != null">
+                    <h1 class="card-title" th:utext="${article.title}"></h1>
+                    <p class="card-content" th:utext="${article.content}"></p>
+                    <p class="card-content" th:utext="${article.publicationDate}"></p>
+                </div>
+                <div th:if="${article.title} == null">
+                    <h1 th:text="#{error.error-404}"></h1>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="recent-articles">
+        <h3 th:text="#{index.label.recentArticles}"></h3>
+        <th:block th:each="article:${articles}">
+            <div class="article-item">
+                <h5>
+                    <a th:href="@{/article/{articleId} (articleId=${article.articleId})}"
+                       class="nav-link px-2 link-dark"
+                       th:text="${article.title}"></a>
+                </h5>
+                <p th:text="${article.publicationDate}" class="text-muted"></p>
+            </div>
+        </th:block>
+    </div>
+
 </div>
 
 <footer th:replace="~{/fragments/footer :: footer}"></footer>
